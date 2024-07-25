@@ -107,7 +107,7 @@ if (require.main === module) {
         readline.question("int ", (iInput) => {
             const i = parseInt(iInput);
             const res = sieveOfEratosthenes(i, prin);
-            fs.writeFileSync("/Users/ed/Downloads/past school stuff/python projects/primes.txt", JSON.stringify(res));
+            fs.writeFileSync("[Removed]/primes.txt", JSON.stringify(res));
             readline.close();
         });
     });
