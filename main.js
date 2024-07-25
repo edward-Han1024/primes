@@ -1,9 +1,8 @@
 const fs = require('fs');
-function sieveOfEratosthenes(n = 100, p = false) {
+function sieveOfEratosthenes(n = 100) {
     /*
      * Args:
      * - n (int) sieve to n
-     * - p (bool) whether to print our not
      */
     console.log("start")
     let primes1 = [];
@@ -97,18 +96,17 @@ function sieveOfEratosthenes(n = 100, p = false) {
     console.log("5 done")
     return primes;
 }
-if (require.main === module) {
-    const readline = require('readline').createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    readline.question("print? ", (prinInput) => {
-        const prin = prinInput.toLowerCase() === 'true';
-        readline.question("int ", (iInput) => {
-            const i = parseInt(iInput);
-            const res = sieveOfEratosthenes(i, prin);
-            fs.writeFileSync("[Removed]/primes.txt", JSON.stringify(res));
-            readline.close();
-        });
-    });
-}
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+readline.question("int ", (iInput) => {
+    const i = parseInt(iInput);
+    const res = sieveOfEratosthenes(i);
+    fs.writeFileSync("primes/primes1.txt", JSON.stringify(res[0]));
+    fs.writeFileSync("primes/primes2.txt", JSON.stringify(res[1]));
+    fs.writeFileSync("primes/primes3.txt", JSON.stringify(res[2]));
+    fs.writeFileSync("primes/primes4.txt", JSON.stringify(res[3]));
+    fs.writeFileSync("primes/primes5.txt", JSON.stringify(res[4]));
+    readline.close();
+});
