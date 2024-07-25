@@ -30,7 +30,7 @@ function sieveOfEratosthenes(n = 100) {
     console.log("filling array")
     primes1 = Array(n/5 + 1).fill(true);  // Assume all numbers in array are prime
     console.log("1 done")
-    primes3 = Array(n/5).fill(true);  // Assume all numbers in array are prime
+    primes2 = Array(n/5).fill(true);  // Assume all numbers in array are prime
     console.log("2 done")
     primes3 = Array(n/5).fill(true);  // Assume all numbers in array are prime
     console.log("3 done")
@@ -66,7 +66,7 @@ function sieveOfEratosthenes(n = 100) {
             }
         }
     }
-    console.log("main loop over")
+    console.log("\nmain loop over")
     let primes = [];
     console.log("final list")
     primes.push(primes1.reduce((acc, isPrime, index) => {
@@ -103,10 +103,16 @@ const readline = require('readline').createInterface({
 readline.question("int ", (iInput) => {
     const i = parseInt(iInput);
     const res = sieveOfEratosthenes(i);
-    fs.writeFileSync("primes/primes1.txt", JSON.stringify(res[0]));
-    fs.writeFileSync("primes/primes2.txt", JSON.stringify(res[1]));
-    fs.writeFileSync("primes/primes3.txt", JSON.stringify(res[2]));
-    fs.writeFileSync("primes/primes4.txt", JSON.stringify(res[3]));
-    fs.writeFileSync("primes/primes5.txt", JSON.stringify(res[4]));
+    console.log("storing files")
+    fs.writeFileSync("./primes/primes1.txt", JSON.stringify(res[0]));
+    console.log("1 done")
+    fs.writeFileSync("./primes/primes2.txt", JSON.stringify(res[1]));
+    console.log("2 done")
+    fs.writeFileSync("./primes/primes3.txt", JSON.stringify(res[2]));
+    console.log("3 done")
+    fs.writeFileSync("./primes/primes4.txt", JSON.stringify(res[3]));
+    console.log("4 done")
+    fs.writeFileSync("./primes/primes5.txt", JSON.stringify(res[4]));
+    console.log("all done closing...")
     readline.close();
 });
