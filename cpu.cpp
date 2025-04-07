@@ -10,6 +10,7 @@ using namespace std;
 int main(){
     initscr();
     while(true){
+        clear();
         move(1,1);
         system("ps -Opmem=PMEM,pcpu=PCPU,nice > temp.txt");
         ifstream file("temp.txt");

@@ -9,9 +9,8 @@
 using namespace std;
 
 /*
-    1. PRIORITY Next improve memory consumption in the store file part
-    by popping list items whenever processed instead of at the end
-    2. Also figure out how to use malloc (not important)
+    1. check only odd #s and push 2
+    2. Figure out how to use malloc (not important)
 */
 
 int main(int argc, char *argv[]){
