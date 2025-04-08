@@ -1,4 +1,4 @@
-AC_INIT([primes], [0.1], [Edward Han])
+AC_INIT([primes], [1.0], [Edward Han])
 AM_INIT_AUTOMAKE
 AC_PROG_CXX
 dnl has to be at the end
