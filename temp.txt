@@ -1,8 +1,0 @@
-  PID PMEM  PCPU NI   TT  STAT      TIME COMMAND
-10676  0.0   0.0  0 s008  Ss     0:00.02 /bin/zsh -il
-12711  6.5 100.0 10 s008  RN+   84:18.01 ./mprime -m
-16231  0.0   0.0  0 s010  Ss     0:00.01 /bin/zsh -il
-16282  0.0   0.0  0 s010  S+     0:00.00 cpu
-16299  0.0   0.0  0 s010  S+     0:00.00 sh -c ps -Opmem=PMEM,pcpu=PCPU,nice > temp.txt
-12845  0.0   0.0  0 s012  Ss     0:00.05 /bin/zsh -il
-16224  0.0 100.0  0 s012  R+     0:11.00 ./primes 1000

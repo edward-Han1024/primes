@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <math.h>
 #include <cstdint>
+#include "miller-rabin.hpp"
 using namespace std;
 
 /*
@@ -14,7 +15,7 @@ using namespace std;
         TODO implement it
         TODO make sure it works!
     TODO implement spot checks
-        TODO implement miller rabin test
+        DONE implement miller rabin test
         TODO do miller rabin tests on a different thread
     TODO Figure out how to use malloc (not important)
 */
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
     }
     cout << endl << "storing files" << endl;
     ofstream file("primes.txt");
+    file << "2\n";
     for (unsigned long i = 0; i < num; i++)
     {
         if (primes[i])

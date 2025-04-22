@@ -135,3 +135,5 @@ config.h
 primes
 primes.txt
 cpu
+temp.txt
+*.xz
