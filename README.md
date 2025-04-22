@@ -1,2 +1,2 @@
 # primes
-primes calculator
+Primes calculator
