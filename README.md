@@ -1,4 +1,5 @@
 # primes
 Primes calculator
 
-# building
+# Building
+See [INSTALL](./INSTALL)
