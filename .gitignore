@@ -2,7 +2,7 @@
 
 # http://www.gnu.org/software/automake
 
-Makefile.in
+# Makefile.in
 /ar-lib
 /mdate-sh
 /py-compile
@@ -24,7 +24,7 @@ autom4te.cache
 /config.log
 /config.status
 /config.sub
-/configure
+# /configure
 /configure.scan
 /depcomp
 /install-sh
@@ -137,3 +137,4 @@ primes.txt
 cpu
 temp.txt
 *.xz
+!Makefile.in

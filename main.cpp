@@ -1,3 +1,17 @@
+// Copyright 2025 Edward Han
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -5,25 +19,41 @@
 #include <math.h>
 #include <cstdint>
 #include <chrono>
-#include "miller-rabin.hpp"
+// #include "miller-rabin.hpp"
+#define ulong unsigned long
 using namespace std;
 
-/*
-    TODO improve algorithm further
-        DONE find out how to improve algorithm
-        TODO implement it
-        TODO make sure it works!
-    TODO implement spot checks
-        DONE implement miller rabin test
-        TODO test the miller rabin test
-        TODO do miller rabin tests on a different thread
-    TODO Figure out how to use malloc (not important)
-*/
 
+// TODO improve algorithm further
+// TODO make sure it works!
+// TODO implement spot checks
+// TODO test the miller rabin test
+// TODO do miller rabin tests on a different thread
+// TODO Figure out how to use malloc (not important)
+
+#ifdef __wasi__
+extern "C" {
+   _LIBCPP_OVERRIDABLE_FUNC_VIS void* __cxa_allocate_exception(size_t) {
+      abort();
+   }
+
+   void __cxa_throw() {
+      abort();
+   }
+}
+#endif
+
+#ifdef EMSCRIPTEN
+extern "C" {
+   void __cxa_throw() {
+      abort();
+   }
+}
+#endif
 
 // Defs
-void basic_sieve(unsigned long &num, unsigned long &limit, vector<bool> &primes);
-vector<bool> basic_wrapper(unsigned long lnum);
+void basic_sieve(ulong &num, ulong &limit, vector<bool> &primes);
+vector<bool> basic_wrapper(ulong lnum);
 long long difference(chrono::system_clock::time_point start);
 
 // Main code
@@ -61,12 +91,12 @@ long long difference(chrono::system_clock::time_point start){
     chrono::duration_cast<chrono::milliseconds>(start.time_since_epoch()).count();
 }
 
-vector<bool> basic_wrapper(unsigned long lnum){
+vector<bool> basic_wrapper(ulong lnum){
     chrono::system_clock::time_point start = chrono::system_clock::now();
     cout << "start init" << endl;
-    unsigned long num = (lnum - 1) / 2;
+    ulong num = (lnum - 1) / 2;
     vector<bool> primes(num, true);
-    unsigned long limit = (sqrt(2 * num + 3) - 1)/ 2;
+    ulong limit = (sqrt(2 * num + 3) - 1)/ 2;
     cout << "init took " << difference(start) << "ms, start main" << endl;
     start = chrono::system_clock::now();
     basic_sieve(num, limit, primes);
@@ -75,12 +105,12 @@ vector<bool> basic_wrapper(unsigned long lnum){
     return primes;
 }
 
-void basic_sieve(unsigned long &num, unsigned long &limit, vector<bool> &primes){
-    for (unsigned long i = 0; i < limit; i++)
+void basic_sieve(ulong &num, ulong &limit, vector<bool> &primes){
+    for (ulong i = 0; i < limit; i++)
     {
         if (primes[i])
         {
-            for (unsigned long j = ((2 * i + 3) * (2 * i + 3) - 3)/ 2; j <= num; j += 2 * i + 3)
+            for (ulong j = ((2 * i + 3) * (2 * i + 3) - 3)/ 2; j <= num; j += 2 * i + 3)
             {
                 primes[j] = false;
             }

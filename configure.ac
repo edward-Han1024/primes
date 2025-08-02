@@ -1,6 +1,6 @@
 AC_INIT([primes], [1.0], [Edward Han])
 AM_INIT_AUTOMAKE
-: ${CXXFLAGS="-O3"}
+: ${CXXFLAGS="-O3 -Wall"}
 AC_PROG_CXX
 
 dnl check for headers
