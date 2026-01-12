@@ -3936,32 +3936,17 @@ esac
 fi
 
 done
-       for ac_header in ctime
+       for ac_header in chrono
 do :
-  ac_fn_cxx_check_header_compile "$LINENO" "ctime" "ac_cv_header_ctime" "$ac_includes_default"
-if test "x$ac_cv_header_ctime" = xyes
+  ac_fn_cxx_check_header_compile "$LINENO" "chrono" "ac_cv_header_chrono" "$ac_includes_default"
+if test "x$ac_cv_header_chrono" = xyes
 then :
-  printf "%s\n" "#define HAVE_CTIME 1" >>confdefs.h
+  printf "%s\n" "#define HAVE_CHRONO 1" >>confdefs.h
 
-printf "%s\n" "#define HAVE_ctime 1" >>confdefs.h
+printf "%s\n" "#define HAVE_chrono 1" >>confdefs.h
 
 else case e in #(
   e) as_fn_error $? "<ctime> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
-esac
-fi
-
-done
-       for ac_header in iomanip
-do :
-  ac_fn_cxx_check_header_compile "$LINENO" "iomanip" "ac_cv_header_iomanip" "$ac_includes_default"
-if test "x$ac_cv_header_iomanip" = xyes
-then :
-  printf "%s\n" "#define HAVE_IOMANIP 1" >>confdefs.h
-
-printf "%s\n" "#define HAVE_iomanip 1" >>confdefs.h
-
-else case e in #(
-  e) as_fn_error $? "<iomanip> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
 esac
 fi
 
@@ -3996,17 +3981,62 @@ esac
 fi
 
 done
-       for ac_header in cstdint
+       for ac_header in algorithm
 do :
-  ac_fn_cxx_check_header_compile "$LINENO" "cstdint" "ac_cv_header_cstdint" "$ac_includes_default"
-if test "x$ac_cv_header_cstdint" = xyes
+  ac_fn_cxx_check_header_compile "$LINENO" "algorithm" "ac_cv_header_algorithm" "$ac_includes_default"
+if test "x$ac_cv_header_algorithm" = xyes
 then :
-  printf "%s\n" "#define HAVE_CSTDINT 1" >>confdefs.h
+  printf "%s\n" "#define HAVE_ALGORITHM 1" >>confdefs.h
 
-printf "%s\n" "#define HAVE_cstdint 1" >>confdefs.h
+printf "%s\n" "#define HAVE_algorithm 1" >>confdefs.h
 
 else case e in #(
-  e) as_fn_error $? "<cstdint> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
+  e) as_fn_error $? "<algorithm> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
+esac
+fi
+
+done
+       for ac_header in mutex
+do :
+  ac_fn_cxx_check_header_compile "$LINENO" "mutex" "ac_cv_header_mutex" "$ac_includes_default"
+if test "x$ac_cv_header_mutex" = xyes
+then :
+  printf "%s\n" "#define HAVE_MUTEX 1" >>confdefs.h
+
+printf "%s\n" "#define HAVE_mutex 1" >>confdefs.h
+
+else case e in #(
+  e) as_fn_error $? "<mutex> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
+esac
+fi
+
+done
+       for ac_header in thread
+do :
+  ac_fn_cxx_check_header_compile "$LINENO" "thread" "ac_cv_header_thread" "$ac_includes_default"
+if test "x$ac_cv_header_thread" = xyes
+then :
+  printf "%s\n" "#define HAVE_THREAD 1" >>confdefs.h
+
+printf "%s\n" "#define HAVE_thread 1" >>confdefs.h
+
+else case e in #(
+  e) as_fn_error $? "<thread> header not found.\nPlease make sure you are using C++ instead of a C compiler" "$LINENO" 5 ;;
+esac
+fi
+
+done
+       for ac_header in boost/dynamic_bitset/dynamic_bitset.hpp
+do :
+  ac_fn_cxx_check_header_compile "$LINENO" "boost/dynamic_bitset/dynamic_bitset.hpp" "ac_cv_header_boost_dynamic_bitset_dynamic_bitset_hpp" "$ac_includes_default"
+if test "x$ac_cv_header_boost_dynamic_bitset_dynamic_bitset_hpp" = xyes
+then :
+  printf "%s\n" "#define HAVE_BOOST_DYNAMIC_BITSET_DYNAMIC_BITSET_HPP 1" >>confdefs.h
+
+printf "%s\n" "#define HAVE_boost 1" >>confdefs.h
+
+else case e in #(
+  e) as_fn_error $? "<boost/dynamic_bitset/dynamic_bitset.hpp> header not found.\nPlease make sure you have boost installed." "$LINENO" 5 ;;
 esac
 fi
 
@@ -5333,4 +5363,5 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 printf "%s\n" "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+
 

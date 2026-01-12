@@ -88,7 +88,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = primes$(EXEEXT) cpu$(EXEEXT)
+bin_PROGRAMS = primes$(EXEEXT)
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -103,11 +103,6 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_cpu_OBJECTS = cpu.$(OBJEXT)
-cpu_OBJECTS = $(am_cpu_OBJECTS)
-cpu_LDADD = $(LDADD)
-cpu_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(cpu_LDFLAGS) \
-	$(LDFLAGS) -o $@
 am_primes_OBJECTS = main.$(OBJEXT)
 primes_OBJECTS = $(am_primes_OBJECTS)
 primes_LDADD = $(LDADD)
@@ -126,7 +121,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/cpu.Po ./$(DEPDIR)/main.Po
+am__depfiles_remade = ./$(DEPDIR)/main.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -141,20 +136,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_@AM_V@)
-am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_@AM_V@)
-am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
-SOURCES = $(cpu_SOURCES) $(primes_SOURCES)
-DIST_SOURCES = $(cpu_SOURCES) $(primes_SOURCES)
+SOURCES = $(primes_SOURCES)
+DIST_SOURCES = $(primes_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -291,9 +274,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-primes_SOURCES = main.cpp miller-rabin.hpp
-cpu_SOURCES = cpu.cpp
-cpu_LDFLAGS = -lncurses
+primes_SOURCES = main.cpp
 all: all-am
 
 .SUFFIXES:
@@ -374,10 +355,6 @@ uninstall-binPROGRAMS:
 clean-binPROGRAMS:
 	-$(am__rm_f) $(bin_PROGRAMS)
 
-cpu$(EXEEXT): $(cpu_OBJECTS) $(cpu_DEPENDENCIES) $(EXTRA_cpu_DEPENDENCIES) 
-	@rm -f cpu$(EXEEXT)
-	$(AM_V_CXXLD)$(cpu_LINK) $(cpu_OBJECTS) $(cpu_LDADD) $(LIBS)
-
 primes$(EXEEXT): $(primes_OBJECTS) $(primes_DEPENDENCIES) $(EXTRA_primes_DEPENDENCIES) 
 	@rm -f primes$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(primes_OBJECTS) $(primes_LDADD) $(LIBS)
@@ -388,7 +365,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -684,7 +660,6 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -f ./$(DEPDIR)/cpu.Po
 	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -733,7 +708,6 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -f ./$(DEPDIR)/cpu.Po
 	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic

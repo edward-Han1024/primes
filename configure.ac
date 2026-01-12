@@ -1,4 +1,4 @@
-AC_INIT([primes], [1.0], [Edward Han])
+AC_INIT([primes], [1.1], [Edward Han])
 AM_INIT_AUTOMAKE
 : ${CXXFLAGS="-O3 -Wall"}
 AC_PROG_CXX
@@ -17,21 +17,27 @@ AC_CHECK_HEADERS([fstream],
 AC_CHECK_HEADERS([string],
   [AC_DEFINE([HAVE_string], [1], [Define to 1 if you have the <string> header file.])],
   [AC_MSG_ERROR([<string> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
-AC_CHECK_HEADERS([ctime],
-  [AC_DEFINE([HAVE_ctime], [1], [Define to 1 if you have the <ctime> header file.])],
+AC_CHECK_HEADERS([chrono],
+  [AC_DEFINE([HAVE_chrono], [1], [Define to 1 if you have the <ctime> header file.])],
   [AC_MSG_ERROR([<ctime> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
-AC_CHECK_HEADERS([iomanip],
-  [AC_DEFINE([HAVE_iomanip], [1], [Define to 1 if you have the <iomanip> header file.])],
-  [AC_MSG_ERROR([<iomanip> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
 AC_CHECK_HEADERS([math.h],
   [AC_DEFINE([HAVE_math_h], [1], [Define to 1 if you have the <math.h> header file.])],
   [AC_MSG_ERROR([<math.h> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
 AC_CHECK_HEADERS([cstdint],
   [AC_DEFINE([HAVE_cstdint], [1], [Define to 1 if you have the <cstdint> header file.])],
   [AC_MSG_ERROR([<cstdint> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
-AC_CHECK_HEADERS([cstdint],
-  [AC_DEFINE([HAVE_cstdint], [1], [Define to 1 if you have the <cstdint> header file.])],
-  [AC_MSG_ERROR([<cstdint> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
+AC_CHECK_HEADERS([algorithm],
+  [AC_DEFINE([HAVE_algorithm], [1], [Define to 1 if you have the <algorithm> header file.])],
+  [AC_MSG_ERROR([<algorithm> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
+AC_CHECK_HEADERS([mutex],
+  [AC_DEFINE([HAVE_mutex], [1], [Define to 1 if you have the <mutex> header file.])],
+  [AC_MSG_ERROR([<mutex> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
+AC_CHECK_HEADERS([thread],
+  [AC_DEFINE([HAVE_thread], [1], [Define to 1 if you have the <thread> header file.])],
+  [AC_MSG_ERROR([<thread> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
+AC_CHECK_HEADERS([boost/dynamic_bitset/dynamic_bitset.hpp],
+  [AC_DEFINE([HAVE_boost], [1], [Define to 1 if you have the <boost/dynamic_bitset/dynamic_bitset.hpp> header file.])],
+  [AC_MSG_ERROR([<boost/dynamic_bitset/dynamic_bitset.hpp> header not found.\nPlease make sure you have boost installed.])])
 AC_LANG_POP([C++])
 
 dnl has to be at the end

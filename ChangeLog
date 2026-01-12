@@ -1,13 +1,18 @@
+## v1.1 11 Jan 2025
+ * Multithreaded
+ * Switched to Binary representation
+ * Multi-file storage
+
 ## v1.0 07 Apr 2025
- * use acually better algorithm, ignore multiples of 2
+ * use actually better algorithm, ignore multiples of 2
  * changelog! (older versions have guessed dates.)
  * Time: 5B in 25 secs. (Another great improvement)
 
 ## v0.2 ?? Mar 2025
- * Use unsinged long, able to compute for larger values
+ * Use unsigned long, able to compute for larger values
  * Use better saving method, just directly write to file
  * remembered to compile with optimizations 
- * Time: 3B in 30 secs. (HUGE improvememnt)
+ * Time: 3B in 30 secs. (HUGE improvement)
 
 ## v0.1 ?? ??? ????
  * C++ version
