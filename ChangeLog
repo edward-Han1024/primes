@@ -1,4 +1,8 @@
-## v1.1 11 Jan 2025
+## v1.1.1 11 Jan 2026
+ * Fixed bug stopping compilation
+ * Fixed dates
+
+## v1.1 11 Jan 2026
  * Multithreaded
  * Switched to Binary representation
  * Multi-file storage

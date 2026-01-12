@@ -32,7 +32,7 @@
 #define using choke me.
 
 // #include "miller-rabin.hpp"
-#define ulong unsigned long
+#define ulong uint64_t
 // using namespace std;
 
 #ifdef __wasi__
@@ -211,7 +211,7 @@ void segmented_sieve(ulong start, ulong end, std::vector<ulong> foundprimes)
     std::ofstream file(filename);
     std::string str = "";
 #ifndef BINARY
-    to_string(bitset, &str);
+    boost::to_string(bitset, str);
     file << str;
 #endif
 #ifdef DEBUG
