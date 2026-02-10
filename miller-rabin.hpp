@@ -1,5 +1,4 @@
 #include<random>
-using namespace std;
 unsigned long mod_exp(unsigned long base, unsigned long exp, unsigned long mod) {
     unsigned long result = 1;
     while (exp > 0) {
@@ -14,7 +13,7 @@ unsigned long mod_exp(unsigned long base, unsigned long exp, unsigned long mod) 
 
 bool miller_rabin(unsigned long n, unsigned int k) {
     // seed it
-    random_device rd;
+    std::random_device rd;
     if (n == 2 || n == 3) return true;
     if ( n<=1 || !(n & 1) ) return false;
 

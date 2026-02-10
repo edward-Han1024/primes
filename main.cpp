@@ -246,3 +246,24 @@ int segmented_sieve_worker(std::vector<ulong> &primes)
     work_mutex.unlock();
     return 0;
 }
+
+constexpr unsigned char BIT1 = 0b10000000;
+constexpr unsigned char BIT2 = 0b01000000;
+constexpr unsigned char BIT3 = 0b00100000;
+constexpr unsigned char BIT4 = 0b00010000;
+constexpr unsigned char BIT5 = 0b00001000;
+constexpr unsigned char BIT6 = 0b00000100;
+constexpr unsigned char BIT7 = 0b00000010;
+constexpr unsigned char BIT8 = 0b00000001;
+
+int sieve30(unsigned long end){
+    // The length of the vector would be the next largest multiple of 30
+    unsigned long length = std::ceil(end / 30.);
+    std::vector<unsigned char> primes(length, 0b11111111);
+    // We must search up to the square root
+    for(unsigned long i = 0; i <= std::ceil(std::sqrt(end) / 30.); ++i){
+	if (primes[i] & BIT1 != 0){
+	    // 1st bit: 1 mod 30
+	}
+    }
+}

@@ -6,11 +6,10 @@
 #include<fstream>
 #include<sstream>
 #include<csignal>
-using namespace std;
 
 void signalHandler(int signum) {
     endwin();
-    cout << "ended on signal SIGINT" << endl;
+    std::cout << "ended on signal SIGINT" << std::endl;
     exit(0);
 }
 
@@ -22,8 +21,8 @@ int main(){
         refresh();
         move(1,1);
         system("ps -Opmem=PMEM,pcpu=PCPU,nice > temp.txt");
-        ifstream file("temp.txt");
-        ostringstream stream;
+        std::ifstream file("temp.txt");
+        std::ostringstream stream;
         stream << file.rdbuf();
         printw(stream.str().c_str());
         move(LINES - 2, 0);

@@ -97,3 +97,29 @@ prime is 19 mod 30 and in the nth byte...
   >>>31n+19      6<<<
      37n+23      4
 prime is 23 mod 30 and in the nth byte...
+     n           7
+	 7n+5        3
+	 11n+8       4
+	 13n+9       8
+	 17n+13      1
+	 19n+14      5
+	 23n+17      6
+	 29n+22      5
+  >>>31n+23      7<<<
+     37n+28      3
+prime is 29 mod 30 and in the nth byte
+     n           8
+	 7n+6        7
+	 11n+10      6
+	 13n+12      5
+	 17n+16      4
+	 19n+18      3
+	 23n+22      2
+	 29n+28      1
+  >>>31n+29      8
+     37n+35      7
+
+## Implementation
+This algorithm can be implemented by large amounts of switch-case statements, which allows us to consider each case seperately. In each iteration, we loop through all 8 of the bits and remove their multiples.
+
+The efficiency of this algorithm is very high. In the first 100, we only remove 49, 77, and 91. Combining this with finding the right place to start, this can greatly reduce runtime.
