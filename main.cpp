@@ -29,11 +29,9 @@
 
 // #define DEBUG 1
 // #define BINARY 1
-#define using choke me.
 
 // #include "miller-rabin.hpp"
 #define ulong uint64_t
-// using namespace std;
 
 #ifdef __wasi__
 extern "C"
@@ -189,6 +187,7 @@ void segmented_sieve(ulong start, ulong end, std::vector<ulong> foundprimes)
             ulong j;
             if (st >= square)
             {
+                // Slightly weird method of finding start
                 j = prime * (ulong) ceil(st / (double)prime) - st;
                 if (j & 0b0001)
                 {
