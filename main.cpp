@@ -23,7 +23,7 @@
 #include <chrono>
 #include <algorithm>
 #define BOOST_DYNAMIC_BITSET_DONT_USE_FRIENDS
-#include <boost/dynamic_bitset/dynamic_bitset.hpp>
+// #include <boost/dynamic_bitset/dynamic_bitset.hpp>
 #include <mutex>
 #include <thread>
 
@@ -57,7 +57,7 @@ extern "C"
     }
 }
 #endif
-
+#if 0
 // Defs
 void basic_sieve(ulong &num, ulong &limit, std::vector<bool> &primes);
 std::vector<bool> basic_wrapper(ulong lnum);
@@ -188,7 +188,7 @@ void segmented_sieve(ulong start, ulong end, std::vector<ulong> foundprimes)
             if (st >= square)
             {
                 // Slightly weird method of finding start
-                j = prime * (ulong) ceil(st / (double)prime) - st;
+                j = prime * (ulong)ceil(st / (double)prime) - st;
                 if (j & 0b0001)
                 {
                     j += prime;
@@ -226,7 +226,8 @@ void segmented_sieve(ulong start, ulong end, std::vector<ulong> foundprimes)
 #endif
 #if defined(DEBUG) || defined(BINARY)
     str = "";
-    std::for_each(bitset.m_bits.begin(), bitset.m_bits.end(), [&str](unsigned char &c){str += c;});
+    std::for_each(bitset.m_bits.begin(), bitset.m_bits.end(), [&str](unsigned char &c)
+                  { str += c; });
     file << str;
 #endif
     file.close();
@@ -246,7 +247,7 @@ int segmented_sieve_worker(std::vector<ulong> &primes)
     work_mutex.unlock();
     return 0;
 }
-
+#endif
 constexpr unsigned char BIT1 = 0b10000000;
 constexpr unsigned char BIT2 = 0b01000000;
 constexpr unsigned char BIT3 = 0b00100000;
@@ -256,14 +257,36 @@ constexpr unsigned char BIT6 = 0b00000100;
 constexpr unsigned char BIT7 = 0b00000010;
 constexpr unsigned char BIT8 = 0b00000001;
 
-int sieve30(unsigned long end){
+constexpr unsigned char NBIT1 = ~BIT1;
+constexpr unsigned char NBIT2 = ~BIT2;
+constexpr unsigned char NBIT3 = ~BIT3;
+constexpr unsigned char NBIT4 = ~BIT4;
+constexpr unsigned char NBIT5 = ~BIT5;
+constexpr unsigned char NBIT6 = ~BIT6;
+constexpr unsigned char NBIT7 = ~BIT7;
+constexpr unsigned char NBIT8 = ~BIT8;
+
+int sieve30(unsigned long end)
+{
     // The length of the vector would be the next largest multiple of 30
-    unsigned long length = std::ceil(end / 30.);
+    const unsigned long length = std::ceil(end / 30.);
     std::vector<unsigned char> primes(length, 0b11111111);
     // We must search up to the square root
-    for(unsigned long i = 0; i <= std::ceil(std::sqrt(end) / 30.); ++i){
-	if (primes[i] & BIT1 != 0){
-	    // 1st bit: 1 mod 30
-	}
+    for (unsigned long nByte = 0; nByte <= std::ceil(std::sqrt(end) / 30.); ++nByte)
+    {
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle){
+                unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                std::cout << whichByte + nByte;
+                //primes[whichByte + nByte] &= NBIT1;
+            }
+        }
     }
+    return 0;
+}
+
+int main(){
+    sieve30(90);
+    return 0;
 }
