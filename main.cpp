@@ -29,7 +29,11 @@
 
 // #define DEBUG 1
 // #define BINARY 1
-
+#ifdef DEBUG
+constexpr int debug = 1;
+#else
+constexpr int debug = 0;
+#endif
 // #include "miller-rabin.hpp"
 #define ulong uint64_t
 
@@ -271,22 +275,234 @@ int sieve30(unsigned long end)
     // The length of the vector would be the next largest multiple of 30
     const unsigned long length = std::ceil(end / 30.);
     std::vector<unsigned char> primes(length, 0b11111111);
+    primes[0] &= NBIT1;
     // We must search up to the square root
     for (unsigned long nByte = 0; nByte <= std::ceil(std::sqrt(end) / 30.); ++nByte)
     {
         if ((primes[nByte] & BIT1) != 0)
         {
-            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle){
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
                 unsigned long whichByte = 30 * nCycle * nByte + nCycle;
-                std::cout << whichByte + nByte;
-                //primes[whichByte + nByte] &= NBIT1;
+                if (debug)
+                {
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
             }
         }
+        if ((primes[nByte] & BIT2) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle * 7 < length; ++nCycle)
+            {
+                unsigned long whichByte = 30 * nCycle * nByte + nCycle * 7;
+                if (debug)
+                {
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte + 1 << std::endl;
+                    std::cout << whichByte + 11 * nByte + 2 << std::endl;
+                    std::cout << whichByte + 13 * nByte + 3 << std::endl;
+                    std::cout << whichByte + 17 * nByte + 3 << std::endl;
+                    std::cout << whichByte + 19 * nByte + 4 << std::endl;
+                    std::cout << whichByte + 23 * nByte + 5 << std::endl;
+                    std::cout << whichByte + 29 * nByte + 6 << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT2;
+                primes[whichByte + nByte * 7 + 1] &= NBIT6;
+                primes[whichByte + nByte * 11 + 2] &= NBIT5;
+                primes[whichByte + nByte * 13 + 3] &= NBIT1;
+                primes[whichByte + nByte * 17 + 3] &= NBIT8;
+                primes[whichByte + nByte * 19 + 4] &= NBIT4;
+                primes[whichByte + nByte * 23 + 5] &= NBIT3;
+                primes[whichByte + nByte * 29 + 6] &= NBIT7;
+            }
+        }
+#if 0
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+        if ((primes[nByte] & BIT1) != 0)
+        {
+            for (unsigned long nCycle = 0; 30 * nCycle * nByte + 29 + nCycle < length; ++nCycle)
+            {
+                if (debug)
+                {
+                    unsigned long whichByte = 30 * nCycle * nByte + nCycle;
+                    std::cout << whichByte + nByte << std::endl;
+                    std::cout << whichByte + 7 * nByte << std::endl;
+                    std::cout << whichByte + 11 * nByte << std::endl;
+                    std::cout << whichByte + 13 * nByte << std::endl;
+                    std::cout << whichByte + 17 * nByte << std::endl;
+                    std::cout << whichByte + 19 * nByte << std::endl;
+                    std::cout << whichByte + 23 * nByte << std::endl;
+                    std::cout << whichByte + 29 * nByte << std::endl;
+                    std::cout << std::endl;
+                }
+                primes[whichByte + nByte] &= NBIT1;
+                primes[whichByte + nByte * 7] &= NBIT2;
+                primes[whichByte + nByte * 11] &= NBIT3;
+                primes[whichByte + nByte * 13] &= NBIT4;
+                primes[whichByte + nByte * 17] &= NBIT5;
+                primes[whichByte + nByte * 19] &= NBIT6;
+                primes[whichByte + nByte * 23] &= NBIT7;
+                primes[whichByte + nByte * 29] &= NBIT8;
+            }
+        }
+#endif
     }
     return 0;
 }
 
-int main(){
-    sieve30(90);
+int main(int argc, char *argv[])
+{
+    sieve30(900);
     return 0;
 }
