@@ -1,4 +1,4 @@
-AC_INIT([primes], [1.1], [Edward Han])
+AC_INIT([primes], [1.2], [Edward Han])
 AM_INIT_AUTOMAKE
 : ${CXXFLAGS="-O3 -Wall"}
 AC_PROG_CXX
