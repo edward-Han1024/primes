@@ -4026,21 +4026,6 @@ esac
 fi
 
 done
-       for ac_header in boost/dynamic_bitset/dynamic_bitset.hpp
-do :
-  ac_fn_cxx_check_header_compile "$LINENO" "boost/dynamic_bitset/dynamic_bitset.hpp" "ac_cv_header_boost_dynamic_bitset_dynamic_bitset_hpp" "$ac_includes_default"
-if test "x$ac_cv_header_boost_dynamic_bitset_dynamic_bitset_hpp" = xyes
-then :
-  printf "%s\n" "#define HAVE_BOOST_DYNAMIC_BITSET_DYNAMIC_BITSET_HPP 1" >>confdefs.h
-
-printf "%s\n" "#define HAVE_boost 1" >>confdefs.h
-
-else case e in #(
-  e) as_fn_error $? "<boost/dynamic_bitset/dynamic_bitset.hpp> header not found.\nPlease make sure you have boost installed." "$LINENO" 5 ;;
-esac
-fi
-
-done
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'

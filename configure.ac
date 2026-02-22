@@ -35,9 +35,6 @@ AC_CHECK_HEADERS([mutex],
 AC_CHECK_HEADERS([thread],
   [AC_DEFINE([HAVE_thread], [1], [Define to 1 if you have the <thread> header file.])],
   [AC_MSG_ERROR([<thread> header not found.\nPlease make sure you are using C++ instead of a C compiler])])
-AC_CHECK_HEADERS([boost/dynamic_bitset/dynamic_bitset.hpp],
-  [AC_DEFINE([HAVE_boost], [1], [Define to 1 if you have the <boost/dynamic_bitset/dynamic_bitset.hpp> header file.])],
-  [AC_MSG_ERROR([<boost/dynamic_bitset/dynamic_bitset.hpp> header not found.\nPlease make sure you have boost installed.])])
 AC_LANG_POP([C++])
 
 dnl has to be at the end
