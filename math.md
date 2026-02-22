@@ -11,6 +11,8 @@ offsets mod 30:
 19
 23
 29
+
+```
 1     29 31    59 61   ...
 01111111 11111111 11111...
  ^
@@ -25,7 +27,9 @@ offsets mod 30:
 1     29 31    59 61    89 91   119 121  149 151  179 181  209 211 ...
 00111111 11111011 11110111 11111111 11111111 11111111 11111111 1111...
               ^            ^ 91   ^ 119^ 133   ^ 161        ^ 203
+```
 ## tables
+```
 If the prime is 1 mod 30 and in the nth byte, then the multiple are in
 byte ... and bit ...
      n           1
@@ -118,8 +122,25 @@ prime is 29 mod 30 and in the nth byte
 	 29n+28      1
   >>>31n+29      8
      37n+35      7
+```
 
-## Implementation
-This algorithm can be implemented by large amounts of switch-case statements, which allows us to consider each case separately. In each iteration, we loop through all 8 of the bits and remove their multiples.
+## starting points
+It's important to start at the correct value to avoid doing too many operations.
 
-The efficiency of this algorithm is very high. In the first 100, we only remove 49, 77, and 91. Combining this with finding the right place to start, this can greatly reduce runtime.
+if the prime is 1 mod 30, we have byte x:
+
+$(30x+1)^2=900x^2+60x+1\implies$ start at byte $30x^2+2x$.
+
+7 mod 30
+
+$(30x+7)^2=900x^2+420x+49\implies$ start at byte $30x^2+14x+1$.
+
+and so on ...
+$30x^2+22x+4$
+$30x^2+26x+5$
+$30x^2+34x+9$
+$30x^2+38x+12$
+$30x^2+46x+17$
+$30x^2+58x+28$
+
+However, the program uses a loop that does not have a nice corresponding byte.

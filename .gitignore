@@ -139,3 +139,5 @@ temp.txt
 *.xz
 !Makefile.in
 primesfolder
+# really?
+*.dSYM/

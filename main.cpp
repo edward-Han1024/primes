@@ -169,7 +169,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT1) != 0)
 	{
 	  if(debug) foundprimes(nByte, 1);
-	  for (nCycle = 0; (30 * nByte + 1) * nCycle + 29 * nByte < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 1) * nCycle + 29 * nByte < length; ++nCycle)
 	    {
 	      whichByte = (30 * nByte + 1) * nCycle;
 	      if (debug)
@@ -243,7 +243,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT2) != 0)
 	{
 	  if(debug) foundprimes(nByte, 2);
-	  for (nCycle = 0; (30 * nByte + 7) * nCycle + 29 * nByte + 6 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 7) * nCycle + 29 * nByte + 6 < length; ++nCycle)
 	    {
 	      whichByte = (30 * nByte + 7) * nCycle;
 	      if (debug)
@@ -317,7 +317,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT3) != 0)
 	{
 	  if(debug) foundprimes(nByte, 3);
-	  for (nCycle = 0; (30 * nByte + 11) * nCycle + 29 * nByte + 10 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 11) * nCycle + 29 * nByte + 10 < length; ++nCycle)
 	    {
 	      whichByte = (30 * nByte + 11) * nCycle;
 	      if (debug)
@@ -391,7 +391,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT4) != 0)
 	{
 	  if(debug) foundprimes(nByte, 4);
-	  for (nCycle = 0; (30 * nByte + 13) * nCycle + 29 * nByte + 12 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 13) * nCycle + 29 * nByte + 12 < length; ++nCycle)
 	    {
 	      whichByte = (30 * nByte + 13) * nCycle;
 	      if (debug)
@@ -465,7 +465,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT5) != 0)
 	{
 	  if(debug) foundprimes(nByte, 5);
-	  for (nCycle = 0; (30 * nByte + 17) * nCycle + 29 * nByte + 16 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 17) * nCycle + 29 * nByte + 16 < length; ++nCycle)
 	    {
 	      uint64_t whichByte = (30 * nByte + 17) * nCycle;
 	      if (debug)
@@ -539,7 +539,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT6) != 0)
 	{
 	  if(debug) foundprimes(nByte, 6);
-	  for (nCycle = 0; (30 * nByte + 19) * nCycle + 29 * nByte + 18 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 19) * nCycle + 29 * nByte + 18 < length; ++nCycle)
 	    {
 	      uint64_t whichByte = (30 * nByte + 19) * nCycle;
 	      if (debug)
@@ -613,7 +613,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT7) != 0)
 	{
 	  if(debug) foundprimes(nByte, 7);
-	  for (nCycle = 0; (30 * nByte + 23) * nCycle + 29 * nByte + 22 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 23) * nCycle + 29 * nByte + 22 < length; ++nCycle)
 	    {
 	      uint64_t whichByte = (30 * nByte + 23) * nCycle;
 	      if (debug)
@@ -687,7 +687,7 @@ int sieve30(unsigned long end)
       if ((primes[nByte] & BIT8) != 0)
 	{
 	  if(debug) foundprimes(nByte, 8);
-	  for (nCycle = 0; (30 * nByte + 29) * nCycle + 29 * nByte + 28 < length; ++nCycle)
+	  for (nCycle = nByte; (30 * nByte + 29) * nCycle + 29 * nByte + 28 < length; ++nCycle)
 	    {
 	      uint64_t whichByte = (30 * nByte + 29) * nCycle;
 	      if (debug)
