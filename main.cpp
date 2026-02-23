@@ -24,7 +24,7 @@
 #include <math.h>
 #include <cstdint>
 // #include <chrono>
-// #include <algorithm>
+#include <algorithm>
 // #define BOOST_DYNAMIC_BITSET_DONT_USE_FRIENDS
 // #include <boost/dynamic_bitset/dynamic_bitset.hpp>
 // #include <mutex>
